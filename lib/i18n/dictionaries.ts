@@ -1,0 +1,283 @@
+import type { Locale } from "@/lib/data/types";
+
+const en = {
+  brand: "Norske Lanka Travels",
+  tagline: "Sri Lanka, planned for travellers from Norway",
+  nav: {
+    home: "Home",
+    packages: "Packages",
+    destinations: "Destinations",
+    hotels: "Hotels",
+    transport: "Transport",
+    howItWorks: "How it works",
+    blog: "Blog",
+    reviews: "Reviews",
+    faq: "FAQ",
+    entry: "Entry rules",
+    about: "About",
+    contact: "Contact",
+    getQuote: "Get a quote",
+  },
+  hero: {
+    title: "Start your Sri Lanka holiday here",
+    subtitle:
+      "Connect with a local Sri Lanka expert who understands Norwegian travellers — private tours, new vehicles, and personal planning.",
+    cta: "Plan my trip",
+    secondary: "See packages",
+  },
+  howItWorks: {
+    title: "How it works",
+    subtitle: "From first message to airport pickup — simple and personal.",
+    steps: [
+      {
+        title: "Tell us your plans",
+        text: "Share dates, interests, and travel style — families, couples, or solo.",
+      },
+      {
+        title: "Talk with your local expert",
+        text: "A free consultation with someone based in Sri Lanka who knows the roads and seasons.",
+      },
+      {
+        title: "Receive personalised options",
+        text: "Get tailored itineraries with hotels, transport, and clear pricing in NOK, EUR, or USD.",
+      },
+      {
+        title: "Travel with confidence",
+        text: "Secure your trip with our team — private driver, partner hotels, and support on the ground.",
+      },
+    ],
+  },
+  why: {
+    title: "Why choose Norske Lanka Travels",
+    items: [
+      {
+        title: "Norway-minded planning",
+        text: "Pace, comfort, and clear English/Norwegian communication built around how Norwegians like to travel.",
+      },
+      {
+        title: "Local Sri Lanka expertise",
+        text: "We live here — temples, tea country, wildlife, and beaches planned without tourist traps.",
+      },
+      {
+        title: "New vehicles only",
+        text: "Comfortable, well-maintained cars with professional, friendly drivers.",
+      },
+      {
+        title: "No booking pressure online",
+        text: "Browse freely, then customise by message — no payment engine in this phase.",
+      },
+    ],
+  },
+  sections: {
+    trending: "Trending destinations",
+    trendingSub: "Places Norwegian guests ask for most.",
+    packages: "Featured packages",
+    packagesSub: "Ready-made journeys you can customise.",
+    reviews: "What travellers say",
+    reviewsSub: "Stories from guests who explored Sri Lanka with us.",
+    notices: "Travel notices",
+    viewAll: "View all",
+    from: "From",
+    perPerson: "per person",
+    days: "days",
+    requestCustom: "Request customisation",
+    inclusions: "Inclusions",
+    itinerary: "Itinerary",
+    relatedHotels: "Partner hotels",
+    relatedPackages: "Related packages",
+    discount: "Contract discount",
+    stars: "stars",
+    seats: "seats",
+    experience: "years experience",
+    languages: "Languages",
+    driverReviews: "Driver reviews",
+    newVehicles: "Only newer vehicles — professional and friendly service throughout your journey.",
+    mapTitle: "Explore Sri Lanka",
+    mapSub: "Tap a destination to learn more.",
+    faqTitle: "Frequently asked questions",
+    contactTitle: "Contact us",
+    contactSub: "Tell us about your dream Sri Lanka trip — we reply personally.",
+    send: "Send message",
+    name: "Name",
+    email: "Email",
+    phone: "Phone (optional)",
+    message: "Message",
+    success: "Thank you — we will get back to you soon.",
+    founderMessage: "A message from the founder",
+    entryTitle: "Entry rules & requirements",
+    entrySub: "What Norwegian travellers need before flying to Sri Lanka.",
+    blogTitle: "Stories & notices",
+    notice: "Notice",
+    announcement: "Announcement",
+    readMore: "Read more",
+    currency: "Currency",
+    language: "Language",
+    footerBlurb:
+      "A sole-proprietor travel agency in Sri Lanka helping guests from Norway discover the island with care.",
+    social: "Follow us",
+    startingFrom: "Starting from",
+  },
+  admin: {
+    login: "Admin login",
+    password: "Password",
+    signIn: "Sign in",
+    signOut: "Sign out",
+    dashboard: "Dashboard",
+    save: "Save",
+    delete: "Delete",
+    create: "Create",
+    edit: "Edit",
+    blogs: "Blog & notices",
+    preview: "Preview",
+    write: "Write",
+  },
+};
+
+export type Dictionary = typeof en;
+
+const no: Dictionary = {
+  brand: "Norske Lanka Travels",
+  tagline: "Sri Lanka, planlagt for reisende fra Norge",
+  nav: {
+    home: "Hjem",
+    packages: "Pakker",
+    destinations: "Destinasjoner",
+    hotels: "Hoteller",
+    transport: "Transport",
+    howItWorks: "Slik fungerer det",
+    blog: "Blogg",
+    reviews: "Anmeldelser",
+    faq: "FAQ",
+    entry: "Innreiseregler",
+    about: "Om oss",
+    contact: "Kontakt",
+    getQuote: "Be om tilbud",
+  },
+  hero: {
+    title: "Start Sri Lanka-ferien din her",
+    subtitle:
+      "Koble deg til en lokal Sri Lanka-ekspert som forstår norske reisende — private turer, nye biler og personlig planlegging.",
+    cta: "Planlegg turen",
+    secondary: "Se pakker",
+  },
+  howItWorks: {
+    title: "Slik fungerer det",
+    subtitle: "Fra første melding til henting på flyplassen — enkelt og personlig.",
+    steps: [
+      {
+        title: "Fortell oss planene",
+        text: "Del datoer, interesser og reisestil — familie, par eller alene.",
+      },
+      {
+        title: "Snakk med din lokale ekspert",
+        text: "En gratis samtale med noen i Sri Lanka som kjenner veiene og sesongene.",
+      },
+      {
+        title: "Få personlige forslag",
+        text: "Skreddersydde reiseruter med hoteller, transport og tydelige priser i NOK, EUR eller USD.",
+      },
+      {
+        title: "Reis trygt",
+        text: "Bekreft turen med oss — privat sjåfør, samarbeidshoteller og støtte på stedet.",
+      },
+    ],
+  },
+  why: {
+    title: "Hvorfor Norske Lanka Travels",
+    items: [
+      {
+        title: "Planlagt med norske reisende i tankene",
+        text: "Tempo, komfort og tydelig kommunikasjon på engelsk/norsk.",
+      },
+      {
+        title: "Lokal Sri Lanka-kunnskap",
+        text: "Vi bor her — templer, teområder, dyreliv og strender uten turistfeller.",
+      },
+      {
+        title: "Kun nyere biler",
+        text: "Komfortable, velholdte biler med profesjonelle og vennlige sjåfører.",
+      },
+      {
+        title: "Ingen betalingspress online",
+        text: "Se i ro og mak, og tilpass via melding — ingen betalingsløsning i denne fasen.",
+      },
+    ],
+  },
+  sections: {
+    trending: "Populære destinasjoner",
+    trendingSub: "Steder norske gjester spør mest om.",
+    packages: "Utvalgte pakker",
+    packagesSub: "Ferdige reiser du kan tilpasse.",
+    reviews: "Hva reisende sier",
+    reviewsSub: "Historier fra gjester som oppdaget Sri Lanka med oss.",
+    notices: "Reisemeldinger",
+    viewAll: "Se alle",
+    from: "Fra",
+    perPerson: "per person",
+    days: "dager",
+    requestCustom: "Be om tilpasning",
+    inclusions: "Inkludert",
+    itinerary: "Reiserute",
+    relatedHotels: "Samarbeidshoteller",
+    relatedPackages: "Relaterte pakker",
+    discount: "Kontraktrabatt",
+    stars: "stjerner",
+    seats: "seter",
+    experience: "års erfaring",
+    languages: "Språk",
+    driverReviews: "Sjåføromtaler",
+    newVehicles:
+      "Kun nyere biler — profesjonell og vennlig service gjennom hele reisen.",
+    mapTitle: "Utforsk Sri Lanka",
+    mapSub: "Trykk på en destinasjon for å lære mer.",
+    faqTitle: "Ofte stilte spørsmål",
+    contactTitle: "Kontakt oss",
+    contactSub: "Fortell oss om drømmeturen til Sri Lanka — vi svarer personlig.",
+    send: "Send melding",
+    name: "Navn",
+    email: "E-post",
+    phone: "Telefon (valgfritt)",
+    message: "Melding",
+    success: "Takk — vi tar kontakt snart.",
+    founderMessage: "En hilsen fra grunnleggeren",
+    entryTitle: "Innreiseregler og krav",
+    entrySub: "Det norske reisende trenger før flyturen til Sri Lanka.",
+    blogTitle: "Historier og meldinger",
+    notice: "Melding",
+    announcement: "Kunngjøring",
+    readMore: "Les mer",
+    currency: "Valuta",
+    language: "Språk",
+    footerBlurb:
+      "Et enkeltmannsforetak i Sri Lanka som hjelper gjester fra Norge å oppdage øya med omtanke.",
+    social: "Følg oss",
+    startingFrom: "Fra",
+  },
+  admin: {
+    login: "Admin-innlogging",
+    password: "Passord",
+    signIn: "Logg inn",
+    signOut: "Logg ut",
+    dashboard: "Dashbord",
+    save: "Lagre",
+    delete: "Slett",
+    create: "Opprett",
+    edit: "Rediger",
+    blogs: "Blogg og meldinger",
+    preview: "Forhåndsvisning",
+    write: "Skriv",
+  },
+};
+
+export const dictionaries: Record<Locale, Dictionary> = { en, no };
+
+export function getDictionary(locale: Locale): Dictionary {
+  return dictionaries[locale] ?? dictionaries.en;
+}
+
+export function t(
+  localized: { en: string; no: string },
+  locale: Locale,
+): string {
+  return localized[locale] ?? localized.en;
+}
