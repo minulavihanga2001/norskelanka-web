@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { setCurrencyAction, switchLocale } from "@/app/actions/preferences";
+import { CustomDropdown } from "@/components/ui/CustomDropdown";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Currency, Locale } from "@/lib/data/types";
 
@@ -57,28 +58,21 @@ export function SiteHeader({
         }`}
       >
         <div
-          className={`pointer-events-auto mx-auto w-full max-w-[1400px] flex justify-between items-center transition-all duration-500 ease-out overflow-hidden text-foam ${
+          className={`pointer-events-auto mx-auto w-full max-w-[1400px] flex justify-between items-center transition-all duration-500 ease-out ${
             scrolled
-              ? "border border-white/25 bg-white/15 backdrop-blur-md rounded-full h-14 sm:h-16 px-5 sm:px-6 shadow-2xl"
-              : "border border-white/25 bg-white/15 backdrop-blur-md rounded-full h-16 sm:h-20 px-6 sm:px-8 shadow-xl"
+              ? "border border-black/10 bg-white/40 backdrop-blur-md rounded-full h-14 sm:h-16 px-5 sm:px-6 shadow-2xl text-ink"
+              : "border border-white/25 bg-white/15 backdrop-blur-md rounded-full h-16 sm:h-20 px-6 sm:px-8 shadow-xl text-foam"
           }`}
         >
-          {/* Logo / Brand Name */}
-          <Link href={base} className="group min-w-0 flex flex-col justify-center">
-            <div
-              className={`font-display tracking-tight transition-all duration-500 text-foam group-hover:text-secondary ${
-                scrolled ? "text-base sm:text-lg" : "text-lg sm:text-xl font-medium"
+          {/* Logo / Brand Image */}
+          <Link href={base} className="group min-w-0 flex items-center shrink-0">
+            <img
+              src={scrolled ? "/images/header-logo.png" : "/images/header-logo-light.png"}
+              alt={dict.brand}
+              className={`object-contain transition-all duration-500 ${
+                scrolled ? "h-7 sm:h-8" : "h-8 sm:h-10"
               }`}
-            >
-              {dict.brand}
-            </div>
-            <div
-              className={`truncate text-secondary/80 transition-all duration-500 group-hover:text-secondary ${
-                scrolled ? "text-[10px] sm:text-[11px]" : "text-[11px] sm:text-xs"
-              }`}
-            >
-              {dict.tagline}
-            </div>
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -93,8 +87,8 @@ export function SiteHeader({
                       aria-current={active ? "page" : undefined}
                       className={`block rounded-full px-3.5 py-1.5 transition-all duration-300 ${
                         active
-                          ? "bg-white/20 text-white font-semibold shadow-sm backdrop-blur-md"
-                          : "text-foam/90 hover:text-white hover:bg-white/12"
+                          ? scrolled ? "bg-black/10 text-ink font-semibold shadow-sm backdrop-blur-md" : "bg-white/20 text-white font-semibold shadow-sm backdrop-blur-md"
+                          : scrolled ? "text-ink/80 hover:text-ink hover:bg-black/5" : "text-foam/90 hover:text-white hover:bg-white/12"
                       }`}
                     >
                       {link.label}
@@ -112,40 +106,28 @@ export function SiteHeader({
           <div className="flex items-center gap-2.5">
             <form action={switchLocale} className="hidden sm:block">
               <input type="hidden" name="pathname" value={pathname} />
-              <select
+              <CustomDropdown
                 name="locale"
-                defaultValue={locale}
-                onChange={(e) => e.currentTarget.form?.requestSubmit()}
-                className="rounded-full border border-white/25 bg-white/15 px-3 py-1.5 text-xs text-foam backdrop-blur-md transition hover:bg-white/25 focus:outline-none focus:ring-1 focus:ring-primary/40 cursor-pointer shadow-sm"
-                aria-label={dict.sections.language}
-              >
-                <option value="en" className="bg-bg-deep text-foam">
-                  EN
-                </option>
-                <option value="no" className="bg-bg-deep text-foam">
-                  NO
-                </option>
-              </select>
+                currentValue={locale}
+                scrolled={scrolled}
+                options={[
+                  { value: 'en', label: 'EN', icon: '🇬🇧' },
+                  { value: 'no', label: 'NO', icon: '🇳🇴' }
+                ]}
+              />
             </form>
 
             <form action={setCurrencyAction} className="hidden sm:block">
-              <select
+              <CustomDropdown
                 name="currency"
-                defaultValue={currency}
-                onChange={(e) => e.currentTarget.form?.requestSubmit()}
-                className="rounded-full border border-white/25 bg-white/15 px-3 py-1.5 text-xs text-foam backdrop-blur-md transition hover:bg-white/25 focus:outline-none focus:ring-1 focus:ring-primary/40 cursor-pointer shadow-sm"
-                aria-label={dict.sections.currency}
-              >
-                <option value="NOK" className="bg-bg-deep text-foam">
-                  NOK
-                </option>
-                <option value="EUR" className="bg-bg-deep text-foam">
-                  EUR
-                </option>
-                <option value="USD" className="bg-bg-deep text-foam">
-                  USD
-                </option>
-              </select>
+                currentValue={currency}
+                scrolled={scrolled}
+                options={[
+                  { value: 'NOK', label: 'NOK', icon: 'kr' },
+                  { value: 'EUR', label: 'EUR', icon: '€' },
+                  { value: 'USD', label: 'USD', icon: '$' }
+                ]}
+              />
             </form>
 
             <Link
@@ -160,7 +142,11 @@ export function SiteHeader({
             {/* Mobile Hamburger Button */}
             <button
               type="button"
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/15 text-foam backdrop-blur-md transition hover:bg-white/25 lg:hidden"
+              className={`flex items-center justify-center w-10 h-10 rounded-full border backdrop-blur-md transition lg:hidden ${
+                scrolled
+                  ? "border-black/10 bg-white/50 text-ink hover:bg-white/70"
+                  : "border-white/20 bg-white/15 text-foam hover:bg-white/25"
+              }`}
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
@@ -184,10 +170,11 @@ export function SiteHeader({
           <div className="relative ml-auto w-[85vw] max-w-sm liquid-glass-popover h-full flex flex-col shadow-2xl border-l border-white/20 text-foam overflow-y-auto outline-none animate-in slide-in-from-right duration-300 ease-out">
             <div className="flex justify-between items-center px-6 py-5 border-b border-white/15">
               <div>
-                <div className="font-display text-lg text-foam font-medium">
-                  {dict.brand}
-                </div>
-                <div className="text-xs text-secondary/80">{dict.tagline}</div>
+                <img
+                  src="/images/header-logo-light.png"
+                  alt={dict.brand}
+                  className="h-7 object-contain"
+                />
               </div>
               <button
                 type="button"
@@ -224,38 +211,28 @@ export function SiteHeader({
               <div className="flex gap-2">
                 <form action={switchLocale} className="flex-1">
                   <input type="hidden" name="pathname" value={pathname} />
-                  <select
+                  <CustomDropdown
                     name="locale"
-                    defaultValue={locale}
-                    onChange={(e) => e.currentTarget.form?.requestSubmit()}
-                    className="w-full rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs text-foam backdrop-blur-md"
-                  >
-                    <option value="en" className="bg-bg-deep text-foam">
-                      English
-                    </option>
-                    <option value="no" className="bg-bg-deep text-foam">
-                      Norsk
-                    </option>
-                  </select>
+                    currentValue={locale}
+                    fullWidth={true}
+                    options={[
+                      { value: 'en', label: 'EN', icon: '🇬🇧' },
+                      { value: 'no', label: 'NO', icon: '🇳🇴' }
+                    ]}
+                  />
                 </form>
 
-                <form action={setCurrencyAction} className="flex-1">
-                  <select
+                <form action={setCurrencyAction} className="flex-1 w-full min-w-0">
+                  <CustomDropdown
                     name="currency"
-                    defaultValue={currency}
-                    onChange={(e) => e.currentTarget.form?.requestSubmit()}
-                    className="w-full rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-xs text-foam backdrop-blur-md"
-                  >
-                    <option value="NOK" className="bg-bg-deep text-foam">
-                      NOK
-                    </option>
-                    <option value="EUR" className="bg-bg-deep text-foam">
-                      EUR
-                    </option>
-                    <option value="USD" className="bg-bg-deep text-foam">
-                      USD
-                    </option>
-                  </select>
+                    currentValue={currency}
+                    fullWidth={true}
+                    options={[
+                      { value: 'NOK', label: 'NOK', icon: 'kr' },
+                      { value: 'EUR', label: 'EUR', icon: '€' },
+                      { value: 'USD', label: 'USD', icon: '$' }
+                    ]}
+                  />
                 </form>
               </div>
 

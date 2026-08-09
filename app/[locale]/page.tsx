@@ -16,6 +16,8 @@ import { getDictionary, t } from "@/lib/i18n/dictionaries";
 import { isLocale } from "@/lib/locale";
 import { getCurrency } from "@/lib/preferences";
 
+import { RightHeroSlideshow } from "@/components/ui/RightHeroSlideshow";
+
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
@@ -33,37 +35,61 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       question: t(f.question, locale),
       answer: t(f.answer, locale),
     }));
-  const heroImage = destinations[0]?.image;
+  const heroImage = "/images/hero-sigiriya-bg.jpg";
 
   return (
     <>
       {/* ── Hero ── */}
       <section
-        className="hero-grid relative min-h-[82vh] overflow-hidden"
+        className="hero-grid relative min-h-[100vh] flex items-center overflow-hidden"
         style={{ ["--hero-image" as string]: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-transparent to-secondary/8" />
-        <div className="page-shell relative flex min-h-[82vh] flex-col justify-end pb-14 pt-32 md:pb-20">
-          <p className="animate-rise mb-3 inline-flex items-center gap-2 text-sm uppercase tracking-[0.22em] text-secondary-light">
-            <span className="inline-block h-px w-8 bg-primary-glow/70" />
-            Norway → Sri Lanka
-          </p>
-          <h1 className="animate-rise font-display max-w-3xl text-4xl leading-[1.05] text-white drop-shadow-lg md:text-6xl">
-            {dict.brand}
-          </h1>
-          <p className="animate-rise-delay mt-3 font-display max-w-2xl text-2xl text-white/95 md:text-3xl">
-            {dict.hero.title}
-          </p>
-          <p className="animate-rise-delay mt-4 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
-            {dict.hero.subtitle}
-          </p>
-          <div className="animate-rise-delay mt-8 flex flex-wrap gap-3">
-            <Button href={`/${locale}/contact`} variant="primary">
-              {dict.hero.cta}
-            </Button>
-            <Button href={`/${locale}/packages`} variant="ghost">
-              {dict.hero.secondary}
-            </Button>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35 md:from-black/75 md:via-black/45 md:to-transparent" />
+        
+        <div className="page-shell relative z-10 w-full pb-14 pt-32 md:pb-20 md:pt-36">
+          <div className="grid w-full gap-10 items-center lg:grid-cols-12">
+            {/* Left Column: Text at Top, Logo in Blurred White Section at Bottom */}
+            <div className="lg:col-span-7 space-y-5">
+              <div className="animate-rise flex items-center gap-2">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white backdrop-blur-md font-semibold shadow-lg">
+                  <span className="h-2 w-2 rounded-full bg-primary-glow animate-pulse" />
+                  Norway → Sri Lanka
+                </span>
+              </div>
+
+              <h1 className="animate-rise font-display max-w-2xl text-4xl leading-[1.08] text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] sm:text-5xl md:text-6xl font-bold">
+                {dict.hero.title}
+              </h1>
+
+              <p className="animate-rise-delay max-w-xl text-base leading-relaxed text-white/95 drop-shadow-md sm:text-lg">
+                {dict.hero.subtitle}
+              </p>
+
+              <div className="animate-rise-delay pt-2 flex flex-wrap items-center gap-3.5">
+                <Button href={`/${locale}/contact`} variant="primary" className="shadow-2xl hover:scale-105">
+                  {dict.hero.cta}
+                </Button>
+                <Button href={`/${locale}/packages`} variant="ghost" className="shadow-lg">
+                  {dict.hero.secondary}
+                </Button>
+              </div>
+
+              {/* High-Visibility Luminous Glass Emblem Badge */}
+              <div className="animate-rise-delay pt-2">
+                <div className="p-5 sm:p-6 bg-white/15 backdrop-blur-xl rounded-3xl border border-white/25 shadow-2xl inline-block transition-all duration-300 hover:scale-102 hover:border-white/40">
+                  <img
+                    src="/images/logo-full-light.png"
+                    alt={dict.brand}
+                    className="h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Blended Photo Slideshow */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <RightHeroSlideshow />
+            </div>
           </div>
         </div>
       </section>
@@ -81,12 +107,48 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </Link>
         }
       >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {destinations.map((d) => (
             <DestinationCard key={d.id} destination={d} locale={locale} />
           ))}
         </div>
       </Section>
+
+      {/* ── Brand Narrative Emblem Showcase ── */}
+      <section className="page-shell py-12">
+        <div className="glass-strong rounded-[var(--radius-xl)] p-8 md:p-14 border border-white/60 shadow-xl overflow-hidden relative">
+          <div className="grid gap-10 items-center lg:grid-cols-12">
+            <div className="lg:col-span-6 flex justify-center">
+              <img
+                src="/images/logo-full.png"
+                alt={dict.brand}
+                className="h-96 sm:h-[460px] md:h-[500px] w-auto object-contain transition-transform duration-500 hover:scale-103 drop-shadow-2xl"
+              />
+            </div>
+            <div className="lg:col-span-6 space-y-5">
+              <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary border border-primary/20">
+                Connecting Norway &amp; Sri Lanka
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl text-ink font-semibold leading-tight">
+                Bridging Nordic Excellence with Sri Lankan Wonder
+              </h2>
+              <p className="leading-relaxed text-ink-muted text-base md:text-lg">
+                Our emblem represents the union of two unique worlds — Norway’s soaring fjords and Sri Lanka’s lush tropical paradise. We craft unforgettable, tailor-made journeys designed with Nordic reliability and warm Sri Lankan hospitality.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-3">
+                <div className="p-4 rounded-2xl bg-white/60 border border-white/80 shadow-sm">
+                  <div className="font-semibold text-ink text-sm md:text-base">🇳🇴 Norwegian Standards</div>
+                  <div className="text-xs md:text-sm text-ink-muted mt-1">Trust, safety &amp; seamless planning</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-white/60 border border-white/80 shadow-sm">
+                  <div className="font-semibold text-ink text-sm md:text-base">🇱🇰 Local Expertise</div>
+                  <div className="text-xs md:text-sm text-ink-muted mt-1">Authentic island experiences</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ── Why choose us ── */}
       <Section title={dict.why.title}>
@@ -116,15 +178,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           </Link>
         }
       >
-        <div className="grid gap-5 md:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-3">
           {dict.howItWorks.steps.map((step, i) => (
-            <div key={step.title} className="glass-strong rounded-[var(--radius-lg)] p-5 glass-card-hover relative overflow-hidden">
-              <div className="absolute -right-2 -top-2 font-display text-7xl text-primary/[0.06]">0{i + 1}</div>
-              <div className="relative">
-                <div className="font-display text-3xl text-primary">0{i + 1}</div>
-                <h3 className="mt-3 font-medium text-ink">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.text}</p>
-              </div>
+            <div key={step.title} className="glass-strong rounded-[var(--radius-lg)] p-6">
+              <div className="font-display text-3xl text-primary">0{i + 1}</div>
+              <h3 className="mt-2 font-display text-lg text-ink">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.text}</p>
             </div>
           ))}
         </div>
@@ -157,16 +216,22 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </Section>
 
       {/* ── Reviews ── */}
-      <Section title={dict.sections.reviews} subtitle={dict.sections.reviewsSub}>
-        <div className="grid gap-5 md:grid-cols-3">
+      <Section
+        title={dict.sections.reviews}
+        action={
+          <Link
+            href={`/${locale}/reviews`}
+            className="inline-flex items-center gap-1 rounded-full bg-primary/8 px-4 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
+          >
+            {dict.sections.viewAll} →
+          </Link>
+        }
+      >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (
-            <article key={review.id} className="glass-strong overflow-hidden rounded-[var(--radius-lg)] glass-card-hover">
-              <div
-                className="h-40 bg-cover bg-center"
-                style={{ backgroundImage: `url(${review.image})` }}
-              />
-              <div className="p-5">
-                <div className="flex gap-0.5 text-primary-vivid">
+            <article key={review.id} className="glass-strong rounded-[var(--radius-lg)] p-6">
+              <div className="flex flex-col justify-between h-full">
+                <div className="flex items-center gap-1 text-primary">
                   {Array.from({ length: review.rating }).map((_, i) => (
                     <span key={i}>★</span>
                   ))}
@@ -227,9 +292,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       {/* ── CTA Banner ── */}
       <section className="page-shell pb-16">
-        <div className="glass-dark animate-float rounded-[var(--radius-xl)] px-8 py-12 text-center text-white md:px-12 animate-pulse-glow">
-          <h2 className="font-display text-3xl md:text-4xl">{dict.hero.cta}</h2>
-          <p className="mx-auto mt-3 max-w-xl leading-relaxed text-white/80">{dict.hero.subtitle}</p>
+        <div className="glass-strong rounded-[var(--radius-xl)] px-8 py-14 text-center text-ink md:px-12 border border-white/80 shadow-xl">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold">{dict.hero.cta}</h2>
+          <p className="mx-auto mt-3 max-w-xl leading-relaxed text-ink-muted">{dict.hero.subtitle}</p>
           <div className="mt-8">
             <Button href={`/${locale}/contact`} variant="primary">
               {dict.nav.getQuote}
