@@ -8,7 +8,7 @@ const styles: Record<Variant, string> = {
     "bg-gradient-to-b from-primary-glow to-primary text-white hover:from-primary hover:to-primary-dark shadow-lg shadow-primary/25 border border-primary-glow/40 hover:shadow-xl hover:shadow-primary/35",
   secondary:
     "glass-strong text-ink hover:bg-white/60 border border-white/50",
-  ghost: "bg-white/12 text-foam hover:bg-white/22 border border-white/20 backdrop-blur-lg",
+  ghost: "border border-white/25 bg-white/15 backdrop-blur-md text-foam hover:bg-white/25 transition-all duration-300 shadow-sm",
 };
 
 export function Button({
