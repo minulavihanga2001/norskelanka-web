@@ -39,8 +39,8 @@ export default async function AdminDestinationsPage() {
               <Field label="Summary NO" name="summaryNo" defaultValue={item.summary.no} textarea />
               <Field label="Description EN" name="descriptionEn" defaultValue={item.description.en} textarea />
               <Field label="Description NO" name="descriptionNo" defaultValue={item.description.no} textarea />
-              <Field label="Map X" name="mapX" type="number" defaultValue={item.mapX} />
-              <Field label="Map Y" name="mapY" type="number" defaultValue={item.mapY} />
+              <Field label="Latitude" name="lat" type="number" defaultValue={item.lat} />
+              <Field label="Longitude" name="lng" type="number" defaultValue={item.lng} />
               <Field
                 label="Related package IDs (comma)"
                 name="relatedPackageIds"
@@ -69,8 +69,8 @@ export default async function AdminDestinationsPage() {
           <Field label="Summary NO" name="summaryNo" textarea />
           <Field label="Description EN" name="descriptionEn" textarea />
           <Field label="Description NO" name="descriptionNo" textarea />
-          <Field label="Map X" name="mapX" type="number" defaultValue={50} />
-          <Field label="Map Y" name="mapY" type="number" defaultValue={50} />
+          <Field label="Latitude" name="lat" type="number" defaultValue={7.87} />
+          <Field label="Longitude" name="lng" type="number" defaultValue={80.77} />
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" name="trending" />
             Trending

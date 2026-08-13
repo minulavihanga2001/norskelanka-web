@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "ghost";
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-gradient-to-b from-primary-glow to-primary text-white hover:from-primary hover:to-primary-dark shadow-lg shadow-primary/25 border border-primary-glow/40 hover:shadow-xl hover:shadow-primary/35",
+    "bg-primary text-white hover:bg-primary-dark shadow-lg shadow-primary/25 border border-primary/40 hover:shadow-xl hover:shadow-primary/35",
   secondary:
     "glass-strong text-ink hover:bg-white/60 border border-white/50",
   ghost: "border border-white/25 bg-white/15 backdrop-blur-md text-foam hover:bg-white/25 transition-all duration-300 shadow-sm",

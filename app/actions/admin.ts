@@ -154,9 +154,29 @@ export async function saveDestinationAction(formData: FormData) {
     },
     image: String(formData.get("image") ?? ""),
     trending: formData.get("trending") === "on",
-    mapX: Number(formData.get("mapX") ?? 50),
-    mapY: Number(formData.get("mapY") ?? 50),
+    lat: Number(formData.get("lat") ?? 7.87),
+    lng: Number(formData.get("lng") ?? 80.77),
     relatedPackageIds: String(formData.get("relatedPackageIds") ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
+    activities: [
+      {
+        en: String(formData.get("activityEn") || "Explore the area with a private driver"),
+        no: String(formData.get("activityNo") || "Utforsk området med privat sjåfør"),
+      },
+    ],
+    facts: [
+      {
+        en: String(formData.get("factEn") || "Popular stop for travellers from Norway"),
+        no: String(formData.get("factNo") || "Populært stopp for reisende fra Norge"),
+      },
+    ],
+    didYouKnow: {
+      en: String(formData.get("didYouKnowEn") || "Ask us for the best time of day to visit."),
+      no: String(formData.get("didYouKnowNo") || "Spør oss om beste tid på dagen å besøke."),
+    },
+    gallery: String(formData.get("gallery") ?? "")
       .split(",")
       .map((s) => s.trim())
       .filter(Boolean),

@@ -415,3 +415,78 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(102, 187, 106, 0.35);
 }
+
+/* ── Sri Lanka map (Leaflet) ── */
+.nl-map.leaflet-container {
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.nl-map .leaflet-control-attribution {
+  display: none !important;
+}
+
+.nl-map .leaflet-control-zoom {
+  border: none !important;
+  margin: 0 14px 14px 0 !important;
+  overflow: hidden;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+.nl-map .leaflet-control-zoom a {
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  font-size: 18px !important;
+  color: #0e1c14 !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: none !important;
+  backdrop-filter: blur(10px);
+}
+
+.nl-map .leaflet-control-zoom a:hover {
+  background: #e8f5e9 !important;
+  color: #1b5e20 !important;
+}
+
+.nl-map .leaflet-control-zoom-in {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.nl-map-tooltip {
+  background: rgba(10, 31, 18, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.nl-map-tooltip::before {
+  border-top-color: rgba(10, 31, 18, 0.9) !important;
+}
+
+.nl-map .leaflet-interactive {
+  cursor: pointer;
+}
+
+.nl-map-pin-wrap {
+  background: transparent !important;
+  border: none !important;
+}
+
+.nl-map-pin {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.nl-map-pin--active {
+  transform: scale(1.12) translateY(-2px);
+}
+
+.nl-map-dot--active {
+  filter: drop-shadow(0 0 8px rgba(102, 187, 106, 0.9));
+}

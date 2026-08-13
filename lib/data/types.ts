@@ -14,10 +14,18 @@ export type Destination = {
   description: LocalizedString;
   image: string;
   trending: boolean;
-  /** Percentage coords on the SVG map (0–100) */
-  mapX: number;
-  mapY: number;
+  /** Geographic coordinates for the interactive map */
+  lat: number;
+  lng: number;
   relatedPackageIds: string[];
+  /** Things travellers can do on site */
+  activities: LocalizedString[];
+  /** Quick facts about the place */
+  facts: LocalizedString[];
+  /** Standout trivia for a Did you know block */
+  didYouKnow: LocalizedString;
+  /** Extra photos for the destination gallery */
+  gallery: string[];
 };
 
 export type ItineraryDay = {

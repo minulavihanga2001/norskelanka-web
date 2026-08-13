@@ -1,4 +1,5 @@
 import type { SiteData } from "@/lib/data/types";
+import { destinationsSeed } from "@/lib/data/destinations";
 
 const img = {
   sigiriya:
@@ -15,6 +16,26 @@ const img = {
     "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1400&q=80",
   anuradhapura:
     "https://images.unsplash.com/photo-1596402184320-417e7178b2ff?w=1400&q=80",
+  nuwaraEliya:
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=80",
+  trincomalee:
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",
+  jaffna:
+    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1400&q=80",
+  negombo:
+    "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1400&q=80",
+  bentota:
+    "https://images.unsplash.com/photo-1519046904884-4515b07c2bb4?w=1400&q=80",
+  udawalawe:
+    "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=1400&q=80",
+  polonnaruwa:
+    "https://images.unsplash.com/photo-1548013146-72479768bada?w=1400&q=80",
+  arugamBay:
+    "https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1400&q=80",
+  dambulla:
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1400&q=80",
+  haputale:
+    "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1400&q=80",
   hotel1:
     "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=80",
   hotel2:
@@ -27,8 +48,7 @@ const img = {
   van: "https://images.unsplash.com/photo-1527786356703-4b100091cd2d?w=1400&q=80",
   driver:
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
-  founder:
-    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80",
+  founder: "/images/founder-original.png",
   review1:
     "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80",
   review2:
@@ -52,152 +72,7 @@ const img = {
 };
 
 export const seedData: SiteData = {
-  destinations: [
-    {
-      id: "d1",
-      slug: "sigiriya",
-      name: { en: "Sigiriya", no: "Sigiriya" },
-      summary: {
-        en: "The Lion Rock fortress rising above the Cultural Triangle.",
-        no: "Løverocken som reiser seg over den kulturelle trekanten.",
-      },
-      description: {
-        en: "Climb the ancient rock fortress at sunrise, explore frescoes, and wander nearby Pidurangala for quieter views — a favourite first stop for Norwegian guests.",
-        no: "Klatre det gamle festningsberget ved soloppgang, se freskene, og nyt stillere utsikt fra Pidurangala — et favorittstopp for norske gjester.",
-      },
-      image: img.sigiriya,
-      trending: true,
-      mapX: 48,
-      mapY: 28,
-      relatedPackageIds: ["p1"],
-    },
-    {
-      id: "d2",
-      slug: "kandy",
-      name: { en: "Kandy", no: "Kandy" },
-      summary: {
-        en: "Hill capital, Temple of the Tooth, and cool evenings.",
-        no: "Hovedstad i høylandet, Tannens tempel og kjølige kvelder.",
-      },
-      description: {
-        en: "Kandy wraps culture and calm: lakeside walks, the Temple of the Tooth, botanical gardens, and a gentle introduction to Sri Lankan highland life.",
-        no: "Kandy byr på kultur og ro: spaserturer ved innsjøen, Tannens tempel, botanisk hage og en myk introduksjon til høylandet.",
-      },
-      image: img.kandy,
-      trending: true,
-      mapX: 52,
-      mapY: 42,
-      relatedPackageIds: ["p1", "p3"],
-    },
-    {
-      id: "d3",
-      slug: "ella",
-      name: { en: "Ella", no: "Ella" },
-      summary: {
-        en: "Tea hills, Nine Arch Bridge, and misty train rides.",
-        no: "Teåser, Nine Arch Bridge og tåkete togturer.",
-      },
-      description: {
-        en: "Ella is made for slow mornings — Little Adam’s Peak, tea factories, and the iconic train through emerald slopes.",
-        no: "Ella er laget for rolige morgener — Little Adam’s Peak, tefabrikker og det ikoniske toget gjennom grønne skråninger.",
-      },
-      image: img.ella,
-      trending: true,
-      mapX: 58,
-      mapY: 55,
-      relatedPackageIds: ["p3"],
-    },
-    {
-      id: "d4",
-      slug: "galle",
-      name: { en: "Galle", no: "Galle" },
-      summary: {
-        en: "Dutch fort walls, cafés, and ocean breezes.",
-        no: "Nederlandske festningsmurer, kafeer og havbris.",
-      },
-      description: {
-        en: "Wander Galle Fort’s cobbled lanes, watch the sunset from the ramparts, and enjoy boutique stays by the sea.",
-        no: "Spasér i Galle Forts brosteinsgater, se solnedgangen fra vollene og nyt boutique-hoteller ved sjøen.",
-      },
-      image: img.galle,
-      trending: false,
-      mapX: 42,
-      mapY: 78,
-      relatedPackageIds: ["p2"],
-    },
-    {
-      id: "d5",
-      slug: "yala",
-      name: { en: "Yala", no: "Yala" },
-      summary: {
-        en: "Safari country — leopards, elephants, and open plains.",
-        no: "Safariland — leoparder, elefanter og åpne sletter.",
-      },
-      description: {
-        en: "Early jeep safaris in Yala National Park for wildlife moments that feel worlds away from Oslo winters.",
-        no: "Tidlige jeepsafarier i Yala nasjonalpark — dyreliv langt unna norske vintre.",
-      },
-      image: img.yala,
-      trending: true,
-      mapX: 62,
-      mapY: 72,
-      relatedPackageIds: ["p2"],
-    },
-    {
-      id: "d6",
-      slug: "mirissa",
-      name: { en: "Mirissa", no: "Mirissa" },
-      summary: {
-        en: "Palm beaches and seasonal whale watching.",
-        no: "Palmestrender og sesongbasert hvalsafari.",
-      },
-      description: {
-        en: "Soft sand, coconut shade, and boat trips when the season is right — the south coast unwind after cultural days.",
-        no: "Myk sand, kokosskygge og båtturer når sesongen er riktig — sørkysten etter kulturelle dager.",
-      },
-      image: img.mirissa,
-      trending: false,
-      mapX: 48,
-      mapY: 82,
-      relatedPackageIds: ["p2"],
-    },
-    {
-      id: "d7",
-      slug: "colombo",
-      name: { en: "Colombo", no: "Colombo" },
-      summary: {
-        en: "Gateway city — markets, temples, and first tastes.",
-        no: "Inngangsporten — markeder, templer og første smaker.",
-      },
-      description: {
-        en: "Start or end in Colombo with street food, colonial architecture, and an easy arrival from European flights.",
-        no: "Start eller avslutt i Colombo med gatekjøkken, kolonialarkitektur og enkel ankomst fra Europa.",
-      },
-      image: img.colombo,
-      trending: false,
-      mapX: 38,
-      mapY: 58,
-      relatedPackageIds: ["p1", "p2", "p3"],
-    },
-    {
-      id: "d8",
-      slug: "anuradhapura",
-      name: { en: "Anuradhapura", no: "Anuradhapura" },
-      summary: {
-        en: "Ancient capital of stupas and sacred Bodhi trees.",
-        no: "Gammel hovedstad med stupaer og hellige Bodhi-trær.",
-      },
-      description: {
-        en: "Cycle among ruins and living temples in one of Asia’s great archaeological landscapes.",
-        no: "Sykle blant ruiner og levende templer i et av Asias store arkeologiske landskap.",
-      },
-      image: img.anuradhapura,
-      trending: false,
-      mapX: 40,
-      mapY: 22,
-      relatedPackageIds: ["p1"],
-    },
-  ],
+  destinations: destinationsSeed,
   packages: [
     {
       id: "p1",
@@ -211,8 +86,8 @@ export const seedData: SiteData = {
         no: "8 dager gjennom Sigiriya, Anuradhapura og Kandy med privat sjåfør.",
       },
       description: {
-        en: "A gentle introduction designed for Norwegian travellers: cooler highland evenings, unhurried temple visits, and boutique stays. Fully customisable.",
-        no: "En myk introduksjon for norske reisende: kjøligere kvelder i høylandet, rolige tempelbesøk og boutique-hoteller. Fullt tilpassbart.",
+        en: "A gentle introduction designed for Norwegian travellers: cooler highland evenings, unhurried temple visits, and boutique stays. Begin in Colombo, move north into the ancient cities of Anuradhapura and Sigiriya, then continue to Kandy for culture and lakeside calm — fully customisable with your private driver.",
+        no: "En myk introduksjon for norske reisende: kjøligere kvelder i høylandet, rolige tempelbesøk og boutique-hoteller. Start i Colombo, dra nordover til de gamle byene Anuradhapura og Sigiriya, og fortsett til Kandy for kultur og ro ved innsjøen — fullt tilpassbart med din private sjåfør.",
       },
       image: img.package1,
       durationDays: 8,
@@ -302,7 +177,7 @@ export const seedData: SiteData = {
         },
       ],
       hotelIds: ["h1", "h2"],
-      destinationIds: ["d1", "d2", "d7", "d8"],
+      destinationIds: ["d7", "d8", "d1", "d2"],
       featured: true,
     },
     {
@@ -932,7 +807,7 @@ Kontakt oss hvis datoene dine overlapper en festival — vi tilpasser dagsplanen
 };
 
 export const founder = {
-  name: "Malsha",
+  name: "Mala Bhai",
   photo: img.founder,
   role: {
     en: "Founder, Norske Lanka Travels",

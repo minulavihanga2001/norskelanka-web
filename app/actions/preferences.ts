@@ -15,13 +15,21 @@ export async function setCurrency(currency: Currency) {
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
   });
-  revalidatePath("/", "layout");
 }
 
 export async function setCurrencyAction(formData: FormData) {
   const currency = String(formData.get("currency") ?? "");
+  const pathname = String(formData.get("pathname") ?? "");
+
   if (isCurrency(currency)) {
     await setCurrency(currency);
+  }
+
+  // Refresh the current route so header + prices pick up the cookie.
+  revalidatePath("/", "layout");
+  if (pathname.startsWith("/")) {
+    revalidatePath(pathname);
+    redirect(pathname);
   }
 }
 

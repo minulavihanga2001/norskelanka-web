@@ -24,7 +24,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const locale = raw;
   const dict = getDictionary(locale);
   const currency = await getCurrency();
-  const destinations = listDestinations().filter((d) => d.trending).slice(0, 4);
+  const destinations = listDestinations().filter((d) => d.trending).slice(0, 6);
   const packages = listPackages().filter((p) => p.featured).slice(0, 3);
   const reviews = listReviews().slice(0, 3);
   const notices = listBlogs().filter((b) => b.kind !== "blog").slice(0, 2);
@@ -50,11 +50,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <div className="grid w-full gap-10 items-center lg:grid-cols-12">
             {/* Left Column: Text at Top, Logo in Blurred White Section at Bottom */}
             <div className="lg:col-span-7 space-y-5">
-              <div className="animate-rise flex items-center gap-2">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white backdrop-blur-md font-semibold shadow-lg">
-                  <span className="h-2 w-2 rounded-full bg-primary-glow animate-pulse" />
-                  Norway → Sri Lanka
-                </span>
+              <div className="animate-rise">
+                <img
+                  src="/images/logo-white.png"
+                  alt={dict.brand}
+                  className="h-36 sm:h-44 md:h-52 w-auto object-contain"
+                />
               </div>
 
               <h1 className="animate-rise font-display max-w-2xl text-4xl leading-[1.08] text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] sm:text-5xl md:text-6xl font-bold">
@@ -72,17 +73,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 <Button href={`/${locale}/packages`} variant="ghost" className="shadow-lg">
                   {dict.hero.secondary}
                 </Button>
-              </div>
-
-              {/* High-Visibility Luminous Glass Emblem Badge */}
-              <div className="animate-rise-delay pt-2">
-                <div className="p-5 sm:p-6 bg-white/15 backdrop-blur-xl rounded-3xl border border-white/25 shadow-2xl inline-block transition-all duration-300 hover:scale-102 hover:border-white/40">
-                  <img
-                    src="/images/logo-full-light.png"
-                    alt={dict.brand}
-                    className="h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
-                  />
-                </div>
               </div>
             </div>
 
